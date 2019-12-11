@@ -10,15 +10,14 @@ public class WeightSort {
 	public static String orderWeight(String string) {
 		System.out.println(string.trim());
 		
-		System.out.println(Arrays.stream(string.split(" "))
+		return Arrays.stream(string.split(" "))
 				.sorted((str1, str2) -> {
 					int i = Arrays.stream(str1.split("")).mapToInt(Integer::valueOf).sum();
 					int j = Arrays.stream(str2.split("")).mapToInt(Integer::valueOf).sum();
-					return Integer.compare(i, j);
+					return (i-j== 0? str1.compareTo(str2): Integer.compare(i, j));
 				})
-				.collect(Collectors.joining(" ")));
+				.collect(Collectors.joining(" "));
 		
-		return null;
 	}
 
 }
